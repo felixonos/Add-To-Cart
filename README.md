@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# Hosting a Static Website on AWS S3
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Accessing the AWS Console
+Log in to your AWS Management Console and type "S3" into the search bar. Select "S3" from the results.
 
-## Available Scripts
+### Creating a New Bucket
+Click "Create bucket."
+Enter a unique "Bucket name", in this case, I used "Add-To-Card" for your website.
 
-In the project directory, you can run:
+### Configuring Bucket Settings
+Deselect "Block all public access" to allow users to access your website.
+Click "Create bucket" to finalize.
+Selecting Your Bucket
+After the bucket is created, select it from the list of available buckets.
 
-### `npm start`
+## Setting Up Static Website Hosting
+In the "Properties" tab, scroll down to "Static web hosting" and click "Edit."
+Select "Enable" and choose "Host a static website."
+Specify the home page (index document) for your site.
+Optional: Configuring Error Handling
+If desired, set an error document name for handling errors and click "Save changes."
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Endpoint Creation
+Once static website hosting is enabled, an endpoint URL for your bucket is generated.
 
-### `npm test`
+### Adding a Bucket Policy for Public Access
+To make your files accessible, add a bucket policy:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Go to the "Permissions" tab.
+Under "Bucket policy," enter the policy provided, adjusting the "Resource" field to match your bucket's ARN with "/*" at the end.
+Uploading Your Website Files
+Upload your website files, including an "index.html" file to serve as the main page.
 
-### `npm run build`
+## Finalizing Configuration
+Return to the "Properties" tab and copy the endpoint URL for your bucket.
+This URL will serve your "index.html" file as the homepage. If the index file is missing, the "error.html" page (if configured) will display instead.
+Sample Website Pages
+The following are example pages for your website:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+index.html: A basic static webpage with content tailored to AWS S3.
+error.html: A custom error page (e.g., 404) for handling missing files.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Conclusion
+By following these steps, you can easily host a static website on AWS S3. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
