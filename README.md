@@ -57,19 +57,17 @@ In your project’s root directory, create a folder named .github/workflows.
 Inside this folder, create a new file, e.g., deploy.yml.
 Copy the following code into the deploy.yml file. Modify the branch name if needed to match the branch you want to deploy from.
 
-yaml
-Copy code
-name: Upload Website
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
+    name: Upload Website
+      on:
+    push:
+        branches: [ "main" ]
+    pull_request:
+         branches: [ "main" ]
+    
+    jobs:
+      build:
+      runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
